@@ -1,0 +1,116 @@
+unit u_Dm;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.IBBase, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Datasnap.Provider,
+  Datasnap.DBClient, FireDAC.Comp.DataSet, FireDAC.VCLUI.Wait, FireDAC.Comp.UI;
+
+type
+  TDm = class(TDataModule)
+    fdConexao: TFDConnection;
+    fdDriverFB: TFDPhysFBDriverLink;
+    fdqDisciplina: TFDQuery;
+    cliDisciplina: TClientDataSet;
+    dspDisciplina: TDataSetProvider;
+    dsDisciplina: TDataSource;
+    fdqDisciplinaDCP_ID: TIntegerField;
+    fdqDisciplinaDCP_DESCRICAO: TStringField;
+    fdqDisciplinaDCP_MEDIA: TCurrencyField;
+    cliDisciplinaDCP_ID: TIntegerField;
+    cliDisciplinaDCP_DESCRICAO: TStringField;
+    cliDisciplinaDCP_MEDIA: TCurrencyField;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    ExecCommando: TFDQuery;
+    fdqNota: TFDQuery;
+    cliNota: TClientDataSet;
+    dspNota: TDataSetProvider;
+    dsNota: TDataSource;
+    fdqNotaTNT_ID: TIntegerField;
+    fdqNotaTNT_DESCRICAO: TStringField;
+    cliNotaTNT_ID: TIntegerField;
+    cliNotaTNT_DESCRICAO: TStringField;
+    fdqDocentes: TFDQuery;
+    cliDocentes: TClientDataSet;
+    dspDocentes: TDataSetProvider;
+    dsDocentes: TDataSource;
+    fdqDocentesPFR_ID: TIntegerField;
+    fdqDocentesPFR_NOME: TStringField;
+    fdqDocentesPFR_CPF: TStringField;
+    fdqDocentesPFR_ENDERECO: TStringField;
+    fdqDocentesPFR_NUMERO: TStringField;
+    fdqDocentesPFR_COMPLEMENTO: TStringField;
+    fdqDocentesPFR_BAIRRO: TStringField;
+    fdqDocentesPFR_CIDADE: TStringField;
+    fdqDocentesPFR_UF: TStringField;
+    fdqDocentesPFR_CEP: TStringField;
+    fdqDocentesPFR_DTNASCIMENTO: TDateField;
+    fdqDocentesPFR_DTCADASTRO: TDateField;
+    cliDocentesPFR_ID: TIntegerField;
+    cliDocentesPFR_NOME: TStringField;
+    cliDocentesPFR_CPF: TStringField;
+    cliDocentesPFR_ENDERECO: TStringField;
+    cliDocentesPFR_NUMERO: TStringField;
+    cliDocentesPFR_COMPLEMENTO: TStringField;
+    cliDocentesPFR_BAIRRO: TStringField;
+    cliDocentesPFR_CIDADE: TStringField;
+    cliDocentesPFR_UF: TStringField;
+    cliDocentesPFR_CEP: TStringField;
+    cliDocentesPFR_DTNASCIMENTO: TDateField;
+    cliDocentesPFR_DTCADASTRO: TDateField;
+    procedure fdConexaoBeforeConnect(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Dm: TDm;
+
+implementation
+
+uses
+  Vcl.Dialogs;
+
+{ %CLASSGROUP 'Vcl.Controls.TControl' }
+
+{$R *.dfm}
+
+procedure TDm.DataModuleCreate(Sender: TObject);
+begin
+  fdConexao.DriverName := 'FB';
+  with fdConexao do
+  begin
+    Params.Clear;
+    Params.Values['DriverID'] := 'FB';
+    Params.Values['protocol'] := 'local';
+    Params.Values['Database'] := StringReplace(GetCurrentDir + '\BASE.FDB',
+      'bin', 'banco', [rfReplaceAll, rfIgnoreCase]);
+    Params.Values['User_name']  := 'sysdba';
+    Params.Values['Password']   := 'masterkey';
+    Params.Values['CharacterSet'] := 'ISO8859_1';
+    Connected := True;
+  end;
+end;
+
+procedure TDm.fdConexaoBeforeConnect(Sender: TObject);
+Var
+  wl_Path: String;
+begin
+
+    wl_Path := StringReplace(GetCurrentDir + '\BASE.FDB', 'bin', 'banco', [rfReplaceAll, rfIgnoreCase]);
+    if Not FileExists(wl_Path) then
+    begin
+      MessageDlg(Format('A Base de Dados não foi encontrada', [TLinkObservers]), mtError, [mbOK], 0);
+      Exit;
+
+    end;
+end;
+
+end.

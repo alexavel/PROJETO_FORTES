@@ -1,0 +1,161 @@
+object frmRelProfessor: TfrmRelProfessor
+  Left = 0
+  Top = 0
+  Caption = 'Lista de professores e alunois'
+  ClientHeight = 33
+  ClientWidth = 307
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object RLReport1: TRLReport
+    Left = 8
+    Top = 46
+    Width = 794
+    Height = 1123
+    DataSource = dsRelAluno
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    object RLBand1: TRLBand
+      Left = 38
+      Top = 38
+      Width = 718
+      Height = 51
+      BandType = btTitle
+      object RLLabel1: TRLLabel
+        Left = 3
+        Top = 3
+        Width = 214
+        Height = 19
+        Caption = 'FORTES INFORMATICA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLLabel2: TRLLabel
+        Left = 3
+        Top = 19
+        Width = 249
+        Height = 16
+        Caption = 'Listagem de Professores e seus alunos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+    object Grupo_Aluno: TRLGroup
+      Left = 38
+      Top = 89
+      Width = 718
+      Height = 104
+      DataFields = 'PFR_ID'
+      object RLBand2: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 53
+        BandType = btHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Borders.FixedTop = True
+        object RLLabel3: TRLLabel
+          Left = 3
+          Top = 3
+          Width = 131
+          Height = 15
+          Caption = 'NOME DO PROFESSOR'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText1: TRLDBText
+          Left = 3
+          Top = 19
+          Width = 542
+          Height = 15
+          AutoSize = False
+          DataField = 'PFR_NOME'
+          DataSource = dsRelAluno
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLLabel4: TRLLabel
+          Left = 131
+          Top = 34
+          Width = 51
+          Height = 15
+          Caption = 'ALUNOS'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+      end
+      object RLBand3: TRLBand
+        Left = 0
+        Top = 53
+        Width = 718
+        Height = 20
+        object RLDBText2: TRLDBText
+          Left = 131
+          Top = 3
+          Width = 542
+          Height = 15
+          AutoSize = False
+          DataField = 'ALN_NOME'
+          DataSource = dsRelAluno
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+      end
+    end
+  end
+  object fdqRelAluno: TFDQuery
+    Active = True
+    Connection = Dm.fdConexao
+    SQL.Strings = (
+      'select pfr_id, aln_id, pfr_nome, aln_nome from docentes'
+      'join disciplina_det on dpd_idpfr = pfr_id'
+      'join alunos_dcp on adc_iddcp = dpd_iddcp'
+      'join alunos On aln_id = adc_idaln'
+      'group by pfr_id, aln_id, pfr_nome, aln_nome ')
+    Left = 432
+  end
+  object dsRelAluno: TDataSource
+    DataSet = fdqRelAluno
+    Left = 544
+  end
+end

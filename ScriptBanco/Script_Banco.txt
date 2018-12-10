@@ -1,0 +1,77 @@
+create table docentes(
+pfr_id int primary key,
+pfr_nome varchar(50) not null,
+pfr_cpf varchar(11) unique not null,
+pfr_endereco varchar(50),
+pfr_numero varchar(10),
+pfr_complemento varchar(30),
+pfr_bairro varchar(30),
+pfr_cidade varchar(30),
+pfr_uf varchar(02) default 'CE',
+pfr_cep varchar(08),
+pfr_DtNascimento date, 
+pfr_DtCadastro Date
+)
+
+create table disciplina(
+dcp_id int primary key,
+dcp_descricao varchar(100),
+dcp_media numeric(5,2)
+)
+
+
+create table disciplina_det(
+dpd_id int primary key,
+dpd_iddcp int,
+dpd_idpfr int
+);
+
+alter table disciplina_det  add constraint dpd_iddcp foreign key (dpd_iddcp) references disciplina (dcp_id)
+alter table disciplina_det  add constraint dpd_idpfr foreign key (dpd_idpfr) references docentes (pfr_id)
+
+create table alunos(
+aln_id int primary key,
+aln_nome varchar(50) not null,
+aln_nomepai varchar(50),
+aln_nomemae varchar(50),
+aln_cpf varchar(11),
+aln_endereco varchar(50),
+aln_numero varchar(10),
+aln_complemento varchar(30),
+aln_bairro varchar(30),
+aln_cidade varchar(30),
+aln_uf varchar(02) default 'CE',
+aln_cep varchar(08),
+aln_DtNascimento date,
+aln_DtCadastro Date
+)
+
+
+create table alunos_dcp(
+adc_id int primary key,
+adc_iddcp int,
+adc_idaln int
+);
+
+alter table alunos_dcp add constraint adc_iddcp foreign key (adc_iddcp) references disciplina (dcp_id)
+alter table alunos_dcp add constraint adc_idaln foreign key (adc_idaln) references alunos (aln_id)
+
+
+create table tipo_nota(
+tnt_id int not null primary key ,
+tnt_descricao varchar(15)
+);
+
+create table alunos_nota(
+nta_id int primary key,
+nta_idaln int, 
+nta_iddcp int,
+nta_idtnt int,
+nta_periodo int,
+nta_nota numeric(5,2)
+);
+
+alter table alunos_nota add constraint nta_idaln foreign key (nta_idaln) references alunos (aln_id)
+alter table alunos_nota add constraint nta_iddcp foreign key (nta_iddcp) references disciplina (dcp_id)
+alter table alunos_nota add constraint nta_idtnt foreign key (nta_idtnt) references tipo_nota (tnt_id)
+

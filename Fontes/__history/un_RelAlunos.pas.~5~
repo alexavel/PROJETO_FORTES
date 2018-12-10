@@ -1,0 +1,55 @@
+unit un_RelAlunos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, RLReport, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TfrmRelAlunos = class(TForm)
+    RadioGroup1: TRadioGroup;
+    Button1: TButton;
+    Button2: TButton;
+    fdqRelAluno: TFDQuery;
+    dsRelAluno: TDataSource;
+    RLReport1: TRLReport;
+    RLBand1: TRLBand;
+    RLLabel1: TRLLabel;
+    RLLabel2: TRLLabel;
+    Grupo_Aluno: TRLGroup;
+    RLBand2: TRLBand;
+    RLLabel3: TRLLabel;
+    RLDBText1: TRLDBText;
+    RLLabel4: TRLLabel;
+    RLDBText2: TRLDBText;
+    Grupo_Disciplinas: TRLGroup;
+    RLBand3: TRLBand;
+    RLLabel5: TRLLabel;
+    RLDBText3: TRLDBText;
+    Grupo_Notas: TRLGroup;
+    RLBand4: TRLBand;
+    RLDBText4: TRLDBText;
+    RLDBText5: TRLDBText;
+    RLLabel6: TRLLabel;
+    RLDBText6: TRLDBText;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRelAlunos: TfrmRelAlunos;
+
+implementation
+
+{$R *.dfm}
+
+uses u_Dm;
+
+end.

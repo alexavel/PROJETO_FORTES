@@ -1,0 +1,1028 @@
+object Dm: TDm
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 428
+  Width = 664
+  object fdConexao: TFDConnection
+    Params.Strings = (
+      'Database=C:\PROJETO_FORTES_INFORMATICA\Banco\BASE.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'CharacterSet=ISO8859_1'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    BeforeConnect = fdConexaoBeforeConnect
+    Left = 24
+    Top = 8
+  end
+  object fdDriverFB: TFDPhysFBDriverLink
+    VendorLib = 'C:\Program Files (x86)\Firebird\Firebird_2_5\bin\fbclient.dll'
+    Left = 120
+    Top = 8
+  end
+  object fdqDisciplina: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'Select * from Disciplina')
+    Left = 24
+    Top = 72
+    object fdqDisciplinaDCP_ID: TIntegerField
+      FieldName = 'DCP_ID'
+      Origin = 'DCP_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqDisciplinaDCP_DESCRICAO: TStringField
+      FieldName = 'DCP_DESCRICAO'
+      Origin = 'DCP_DESCRICAO'
+      Size = 100
+    end
+    object fdqDisciplinaDCP_MEDIA: TCurrencyField
+      FieldName = 'DCP_MEDIA'
+      Origin = 'DCP_MEDIA'
+    end
+  end
+  object cliDisciplina: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspDisciplina'
+    Left = 184
+    Top = 72
+    object cliDisciplinaDCP_ID: TIntegerField
+      FieldName = 'DCP_ID'
+      Origin = 'DCP_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cliDisciplinaDCP_DESCRICAO: TStringField
+      FieldName = 'DCP_DESCRICAO'
+      Origin = 'DCP_DESCRICAO'
+      Size = 100
+    end
+    object cliDisciplinaDCP_MEDIA: TCurrencyField
+      FieldName = 'DCP_MEDIA'
+      Origin = 'DCP_MEDIA'
+      DisplayFormat = '##0.00'
+      EditFormat = '##0.00'
+    end
+  end
+  object dspDisciplina: TDataSetProvider
+    DataSet = fdqDisciplina
+    Left = 104
+    Top = 72
+  end
+  object dsDisciplina: TDataSource
+    DataSet = cliDisciplina
+    Left = 264
+    Top = 72
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 216
+    Top = 8
+  end
+  object ExecCommando: TFDQuery
+    Connection = fdConexao
+    Left = 592
+    Top = 16
+  end
+  object fdqNota: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'Select * from tipo_nota')
+    Left = 24
+    Top = 128
+    object fdqNotaTNT_ID: TIntegerField
+      FieldName = 'TNT_ID'
+      Origin = 'TNT_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqNotaTNT_DESCRICAO: TStringField
+      FieldName = 'TNT_DESCRICAO'
+      Origin = 'TNT_DESCRICAO'
+      Size = 15
+    end
+  end
+  object cliNota: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspNota'
+    Left = 184
+    Top = 128
+    object cliNotaTNT_ID: TIntegerField
+      FieldName = 'TNT_ID'
+      Required = True
+    end
+    object cliNotaTNT_DESCRICAO: TStringField
+      FieldName = 'TNT_DESCRICAO'
+      Size = 15
+    end
+  end
+  object dspNota: TDataSetProvider
+    DataSet = fdqNota
+    Left = 104
+    Top = 128
+  end
+  object dsNota: TDataSource
+    DataSet = cliNota
+    Left = 264
+    Top = 128
+  end
+  object fdqDocentes: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'Select * from docentes')
+    Left = 24
+    Top = 184
+    object fdqDocentesPFR_ID: TIntegerField
+      FieldName = 'PFR_ID'
+      Origin = 'PFR_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqDocentesPFR_NOME: TStringField
+      FieldName = 'PFR_NOME'
+      Origin = 'PFR_NOME'
+      Required = True
+      Size = 50
+    end
+    object fdqDocentesPFR_CPF: TStringField
+      FieldName = 'PFR_CPF'
+      Origin = 'PFR_CPF'
+      Required = True
+      Size = 11
+    end
+    object fdqDocentesPFR_ENDERECO: TStringField
+      FieldName = 'PFR_ENDERECO'
+      Origin = 'PFR_ENDERECO'
+      Size = 50
+    end
+    object fdqDocentesPFR_NUMERO: TStringField
+      FieldName = 'PFR_NUMERO'
+      Origin = 'PFR_NUMERO'
+      Size = 10
+    end
+    object fdqDocentesPFR_COMPLEMENTO: TStringField
+      FieldName = 'PFR_COMPLEMENTO'
+      Origin = 'PFR_COMPLEMENTO'
+      Size = 30
+    end
+    object fdqDocentesPFR_BAIRRO: TStringField
+      FieldName = 'PFR_BAIRRO'
+      Origin = 'PFR_BAIRRO'
+      Size = 30
+    end
+    object fdqDocentesPFR_CIDADE: TStringField
+      FieldName = 'PFR_CIDADE'
+      Origin = 'PFR_CIDADE'
+      Size = 30
+    end
+    object fdqDocentesPFR_UF: TStringField
+      FieldName = 'PFR_UF'
+      Origin = 'PFR_UF'
+      Size = 2
+    end
+    object fdqDocentesPFR_CEP: TStringField
+      FieldName = 'PFR_CEP'
+      Origin = 'PFR_CEP'
+      Size = 8
+    end
+    object fdqDocentesPFR_DTNASCIMENTO: TDateField
+      FieldName = 'PFR_DTNASCIMENTO'
+      Origin = 'PFR_DTNASCIMENTO'
+    end
+    object fdqDocentesPFR_DTCADASTRO: TDateField
+      FieldName = 'PFR_DTCADASTRO'
+      Origin = 'PFR_DTCADASTRO'
+    end
+  end
+  object cliDocentes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspDocentes'
+    Left = 184
+    Top = 184
+    object cliDocentesPFR_ID: TIntegerField
+      FieldName = 'PFR_ID'
+      Required = True
+    end
+    object cliDocentesPFR_NOME: TStringField
+      FieldName = 'PFR_NOME'
+      Required = True
+      Size = 50
+    end
+    object cliDocentesPFR_CPF: TStringField
+      FieldName = 'PFR_CPF'
+      Required = True
+      Size = 11
+    end
+    object cliDocentesPFR_ENDERECO: TStringField
+      FieldName = 'PFR_ENDERECO'
+      Size = 50
+    end
+    object cliDocentesPFR_NUMERO: TStringField
+      FieldName = 'PFR_NUMERO'
+      Size = 10
+    end
+    object cliDocentesPFR_COMPLEMENTO: TStringField
+      FieldName = 'PFR_COMPLEMENTO'
+      Size = 30
+    end
+    object cliDocentesPFR_BAIRRO: TStringField
+      FieldName = 'PFR_BAIRRO'
+      Size = 30
+    end
+    object cliDocentesPFR_CIDADE: TStringField
+      FieldName = 'PFR_CIDADE'
+      Size = 30
+    end
+    object cliDocentesPFR_UF: TStringField
+      FieldName = 'PFR_UF'
+      Size = 2
+    end
+    object cliDocentesPFR_CEP: TStringField
+      FieldName = 'PFR_CEP'
+      Size = 8
+    end
+    object cliDocentesPFR_DTNASCIMENTO: TDateField
+      FieldName = 'PFR_DTNASCIMENTO'
+    end
+    object cliDocentesPFR_DTCADASTRO: TDateField
+      FieldName = 'PFR_DTCADASTRO'
+    end
+  end
+  object dspDocentes: TDataSetProvider
+    DataSet = fdqDocentes
+    Left = 104
+    Top = 184
+  end
+  object dsDocentes: TDataSource
+    DataSet = cliDocentes
+    Left = 264
+    Top = 184
+  end
+  object fdqDiscDet: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'Select * from disciplina_det'
+      'join disciplina On dcp_id = dpd_iddcp'
+      'join docentes On pfr_id = dpd_idpfr'
+      'where dpd_idpfr = :IDPFR'
+      '')
+    Left = 24
+    Top = 240
+    ParamData = <
+      item
+        Name = 'IDPFR'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = '1'
+      end>
+    object fdqDiscDetDPD_ID: TIntegerField
+      FieldName = 'DPD_ID'
+      Origin = 'DPD_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqDiscDetDPD_IDDCP: TIntegerField
+      FieldName = 'DPD_IDDCP'
+      Origin = 'DPD_IDDCP'
+    end
+    object fdqDiscDetDPD_IDPFR: TIntegerField
+      FieldName = 'DPD_IDPFR'
+      Origin = 'DPD_IDPFR'
+    end
+    object fdqDiscDetDCP_ID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'DCP_ID'
+      Origin = 'DCP_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqDiscDetDCP_DESCRICAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DCP_DESCRICAO'
+      Origin = 'DCP_DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object fdqDiscDetDCP_MEDIA: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'DCP_MEDIA'
+      Origin = 'DCP_MEDIA'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqDiscDetPFR_ID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_ID'
+      Origin = 'PFR_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqDiscDetPFR_NOME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_NOME'
+      Origin = 'PFR_NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqDiscDetPFR_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_CPF'
+      Origin = 'PFR_CPF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 11
+    end
+    object fdqDiscDetPFR_ENDERECO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_ENDERECO'
+      Origin = 'PFR_ENDERECO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqDiscDetPFR_NUMERO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_NUMERO'
+      Origin = 'PFR_NUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
+    end
+    object fdqDiscDetPFR_COMPLEMENTO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_COMPLEMENTO'
+      Origin = 'PFR_COMPLEMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object fdqDiscDetPFR_BAIRRO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_BAIRRO'
+      Origin = 'PFR_BAIRRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object fdqDiscDetPFR_CIDADE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_CIDADE'
+      Origin = 'PFR_CIDADE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object fdqDiscDetPFR_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_UF'
+      Origin = 'PFR_UF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 2
+    end
+    object fdqDiscDetPFR_CEP: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_CEP'
+      Origin = 'PFR_CEP'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object fdqDiscDetPFR_DTNASCIMENTO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_DTNASCIMENTO'
+      Origin = 'PFR_DTNASCIMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqDiscDetPFR_DTCADASTRO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'PFR_DTCADASTRO'
+      Origin = 'PFR_DTCADASTRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object cliDiscDet: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'IDPFR'
+        ParamType = ptInput
+        Value = '0'
+      end>
+    ProviderName = 'dspDiscDet'
+    Left = 184
+    Top = 240
+    object cliDiscDetDPD_ID: TIntegerField
+      FieldName = 'DPD_ID'
+      Origin = 'DPD_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cliDiscDetDPD_IDDCP: TIntegerField
+      FieldName = 'DPD_IDDCP'
+      Origin = 'DPD_IDDCP'
+    end
+    object cliDiscDetDPD_IDPFR: TIntegerField
+      FieldName = 'DPD_IDPFR'
+      Origin = 'DPD_IDPFR'
+    end
+    object cliDiscDetDCP_ID: TIntegerField
+      FieldName = 'DCP_ID'
+      Origin = 'DCP_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object cliDiscDetDCP_DESCRICAO: TStringField
+      FieldName = 'DCP_DESCRICAO'
+      Origin = 'DCP_DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object cliDiscDetDCP_MEDIA: TCurrencyField
+      FieldName = 'DCP_MEDIA'
+      Origin = 'DCP_MEDIA'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '##0.00'
+      EditFormat = '##0.00'
+    end
+    object cliDiscDetPFR_ID: TIntegerField
+      FieldName = 'PFR_ID'
+      Origin = 'PFR_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object cliDiscDetPFR_NOME: TStringField
+      FieldName = 'PFR_NOME'
+      Origin = 'PFR_NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object cliDiscDetPFR_CPF: TStringField
+      FieldName = 'PFR_CPF'
+      Origin = 'PFR_CPF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 11
+    end
+    object cliDiscDetPFR_ENDERECO: TStringField
+      FieldName = 'PFR_ENDERECO'
+      Origin = 'PFR_ENDERECO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object cliDiscDetPFR_NUMERO: TStringField
+      FieldName = 'PFR_NUMERO'
+      Origin = 'PFR_NUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
+    end
+    object cliDiscDetPFR_COMPLEMENTO: TStringField
+      FieldName = 'PFR_COMPLEMENTO'
+      Origin = 'PFR_COMPLEMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object cliDiscDetPFR_BAIRRO: TStringField
+      FieldName = 'PFR_BAIRRO'
+      Origin = 'PFR_BAIRRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object cliDiscDetPFR_CIDADE: TStringField
+      FieldName = 'PFR_CIDADE'
+      Origin = 'PFR_CIDADE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object cliDiscDetPFR_UF: TStringField
+      FieldName = 'PFR_UF'
+      Origin = 'PFR_UF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 2
+    end
+    object cliDiscDetPFR_CEP: TStringField
+      FieldName = 'PFR_CEP'
+      Origin = 'PFR_CEP'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object cliDiscDetPFR_DTNASCIMENTO: TDateField
+      FieldName = 'PFR_DTNASCIMENTO'
+      Origin = 'PFR_DTNASCIMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object cliDiscDetPFR_DTCADASTRO: TDateField
+      FieldName = 'PFR_DTCADASTRO'
+      Origin = 'PFR_DTCADASTRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object dspDiscDet: TDataSetProvider
+    DataSet = fdqDiscDet
+    Left = 104
+    Top = 240
+  end
+  object dsDiscDet: TDataSource
+    DataSet = cliDiscDet
+    Left = 264
+    Top = 240
+  end
+  object GravaDiscDet: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'insert into disciplina_det (dpd_id, dpd_iddcp, dpd_idpfr )'
+      
+        '                    values ((Select Coalesce( max(dpd_id),0)+1 F' +
+        'rom disciplina_det), :IDDCP, :IDPFR)')
+    Left = 592
+    Top = 64
+    ParamData = <
+      item
+        Name = 'IDDCP'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'IDPFR'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object fdqAluno: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'Select * from alunos')
+    Left = 24
+    Top = 304
+    object fdqAlunoALN_ID: TIntegerField
+      FieldName = 'ALN_ID'
+      Origin = 'ALN_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqAlunoALN_NOME: TStringField
+      FieldName = 'ALN_NOME'
+      Origin = 'ALN_NOME'
+      Required = True
+      Size = 50
+    end
+    object fdqAlunoALN_NOMEPAI: TStringField
+      FieldName = 'ALN_NOMEPAI'
+      Origin = 'ALN_NOMEPAI'
+      Required = True
+      Size = 50
+    end
+    object fdqAlunoALN_NOMEMAE: TStringField
+      FieldName = 'ALN_NOMEMAE'
+      Origin = 'ALN_NOMEMAE'
+      Required = True
+      Size = 50
+    end
+    object fdqAlunoALN_CPF: TStringField
+      FieldName = 'ALN_CPF'
+      Origin = 'ALN_CPF'
+      Size = 11
+    end
+    object fdqAlunoALN_ENDERECO: TStringField
+      FieldName = 'ALN_ENDERECO'
+      Origin = 'ALN_ENDERECO'
+      Size = 50
+    end
+    object fdqAlunoALN_NUMERO: TStringField
+      FieldName = 'ALN_NUMERO'
+      Origin = 'ALN_NUMERO'
+      Size = 10
+    end
+    object fdqAlunoALN_COMPLEMENTO: TStringField
+      FieldName = 'ALN_COMPLEMENTO'
+      Origin = 'ALN_COMPLEMENTO'
+      Size = 30
+    end
+    object fdqAlunoALN_BAIRRO: TStringField
+      FieldName = 'ALN_BAIRRO'
+      Origin = 'ALN_BAIRRO'
+      Size = 30
+    end
+    object fdqAlunoALN_CIDADE: TStringField
+      FieldName = 'ALN_CIDADE'
+      Origin = 'ALN_CIDADE'
+      Size = 30
+    end
+    object fdqAlunoALN_UF: TStringField
+      FieldName = 'ALN_UF'
+      Origin = 'ALN_UF'
+      Size = 2
+    end
+    object fdqAlunoALN_CEP: TStringField
+      FieldName = 'ALN_CEP'
+      Origin = 'ALN_CEP'
+      Size = 8
+    end
+    object fdqAlunoALN_DTNASCIMENTO: TDateField
+      FieldName = 'ALN_DTNASCIMENTO'
+      Origin = 'ALN_DTNASCIMENTO'
+    end
+    object fdqAlunoALN_DTCADASTRO: TDateField
+      FieldName = 'ALN_DTCADASTRO'
+      Origin = 'ALN_DTCADASTRO'
+    end
+  end
+  object cliAluno: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspAluno'
+    Left = 184
+    Top = 304
+    object cliAlunoALN_ID: TIntegerField
+      FieldName = 'ALN_ID'
+      Required = True
+    end
+    object cliAlunoALN_NOME: TStringField
+      FieldName = 'ALN_NOME'
+      Required = True
+      Size = 50
+    end
+    object cliAlunoALN_NOMEPAI: TStringField
+      FieldName = 'ALN_NOMEPAI'
+      Required = True
+      Size = 50
+    end
+    object cliAlunoALN_NOMEMAE: TStringField
+      FieldName = 'ALN_NOMEMAE'
+      Required = True
+      Size = 50
+    end
+    object cliAlunoALN_CPF: TStringField
+      FieldName = 'ALN_CPF'
+      Size = 11
+    end
+    object cliAlunoALN_ENDERECO: TStringField
+      FieldName = 'ALN_ENDERECO'
+      Size = 50
+    end
+    object cliAlunoALN_NUMERO: TStringField
+      FieldName = 'ALN_NUMERO'
+      Size = 10
+    end
+    object cliAlunoALN_COMPLEMENTO: TStringField
+      FieldName = 'ALN_COMPLEMENTO'
+      Size = 30
+    end
+    object cliAlunoALN_BAIRRO: TStringField
+      FieldName = 'ALN_BAIRRO'
+      Size = 30
+    end
+    object cliAlunoALN_CIDADE: TStringField
+      FieldName = 'ALN_CIDADE'
+      Size = 30
+    end
+    object cliAlunoALN_UF: TStringField
+      FieldName = 'ALN_UF'
+      Size = 2
+    end
+    object cliAlunoALN_CEP: TStringField
+      FieldName = 'ALN_CEP'
+      Size = 8
+    end
+    object cliAlunoALN_DTNASCIMENTO: TDateField
+      FieldName = 'ALN_DTNASCIMENTO'
+    end
+    object cliAlunoALN_DTCADASTRO: TDateField
+      FieldName = 'ALN_DTCADASTRO'
+    end
+  end
+  object dspAluno: TDataSetProvider
+    DataSet = fdqAluno
+    Left = 104
+    Top = 304
+  end
+  object dsAluno: TDataSource
+    DataSet = cliAluno
+    Left = 264
+    Top = 304
+  end
+  object fdqAlnDisc: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'Select * from alunos_dcp'
+      'join disciplina On dcp_id = adc_iddcp'
+      'join alunos On aln_id = adc_idaln'
+      'where adc_idaln = :IDPFR'
+      '')
+    Left = 24
+    Top = 360
+    ParamData = <
+      item
+        Position = 1
+        Name = 'IDPFR'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = '0'
+      end>
+    object fdqAlnDiscADC_ID: TIntegerField
+      FieldName = 'ADC_ID'
+      Origin = 'ADC_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqAlnDiscADC_IDDCP: TIntegerField
+      FieldName = 'ADC_IDDCP'
+      Origin = 'ADC_IDDCP'
+    end
+    object fdqAlnDiscADC_IDALN: TIntegerField
+      FieldName = 'ADC_IDALN'
+      Origin = 'ADC_IDALN'
+    end
+    object fdqAlnDiscDCP_ID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'DCP_ID'
+      Origin = 'DCP_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqAlnDiscDCP_DESCRICAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DCP_DESCRICAO'
+      Origin = 'DCP_DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object fdqAlnDiscDCP_MEDIA: TCurrencyField
+      AutoGenerateValue = arDefault
+      FieldName = 'DCP_MEDIA'
+      Origin = 'DCP_MEDIA'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqAlnDiscALN_ID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_ID'
+      Origin = 'ALN_ID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqAlnDiscALN_NOME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_NOME'
+      Origin = 'ALN_NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqAlnDiscALN_NOMEPAI: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_NOMEPAI'
+      Origin = 'ALN_NOMEPAI'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqAlnDiscALN_NOMEMAE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_NOMEMAE'
+      Origin = 'ALN_NOMEMAE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqAlnDiscALN_CPF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_CPF'
+      Origin = 'ALN_CPF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 11
+    end
+    object fdqAlnDiscALN_ENDERECO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_ENDERECO'
+      Origin = 'ALN_ENDERECO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object fdqAlnDiscALN_NUMERO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_NUMERO'
+      Origin = 'ALN_NUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
+    end
+    object fdqAlnDiscALN_COMPLEMENTO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_COMPLEMENTO'
+      Origin = 'ALN_COMPLEMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object fdqAlnDiscALN_BAIRRO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_BAIRRO'
+      Origin = 'ALN_BAIRRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object fdqAlnDiscALN_CIDADE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_CIDADE'
+      Origin = 'ALN_CIDADE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object fdqAlnDiscALN_UF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_UF'
+      Origin = 'ALN_UF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 2
+    end
+    object fdqAlnDiscALN_CEP: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_CEP'
+      Origin = 'ALN_CEP'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object fdqAlnDiscALN_DTNASCIMENTO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_DTNASCIMENTO'
+      Origin = 'ALN_DTNASCIMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object fdqAlnDiscALN_DTCADASTRO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'ALN_DTCADASTRO'
+      Origin = 'ALN_DTCADASTRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object cliAlnDisc: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'IDPFR'
+        ParamType = ptInput
+        Value = '0'
+      end>
+    ProviderName = 'dspAlnDisc'
+    Left = 184
+    Top = 360
+    object cliAlnDiscADC_ID: TIntegerField
+      FieldName = 'ADC_ID'
+      Required = True
+    end
+    object cliAlnDiscADC_IDDCP: TIntegerField
+      FieldName = 'ADC_IDDCP'
+    end
+    object cliAlnDiscADC_IDALN: TIntegerField
+      FieldName = 'ADC_IDALN'
+    end
+    object cliAlnDiscDCP_ID: TIntegerField
+      FieldName = 'DCP_ID'
+      ReadOnly = True
+    end
+    object cliAlnDiscDCP_DESCRICAO: TStringField
+      FieldName = 'DCP_DESCRICAO'
+      ReadOnly = True
+      Size = 100
+    end
+    object cliAlnDiscDCP_MEDIA: TCurrencyField
+      FieldName = 'DCP_MEDIA'
+      ReadOnly = True
+      DisplayFormat = '##0.00'
+      EditFormat = '##0.00'
+    end
+    object cliAlnDiscALN_ID: TIntegerField
+      FieldName = 'ALN_ID'
+      ReadOnly = True
+    end
+    object cliAlnDiscALN_NOME: TStringField
+      FieldName = 'ALN_NOME'
+      ReadOnly = True
+      Size = 50
+    end
+    object cliAlnDiscALN_NOMEPAI: TStringField
+      FieldName = 'ALN_NOMEPAI'
+      ReadOnly = True
+      Size = 50
+    end
+    object cliAlnDiscALN_NOMEMAE: TStringField
+      FieldName = 'ALN_NOMEMAE'
+      ReadOnly = True
+      Size = 50
+    end
+    object cliAlnDiscALN_CPF: TStringField
+      FieldName = 'ALN_CPF'
+      ReadOnly = True
+      Size = 11
+    end
+    object cliAlnDiscALN_ENDERECO: TStringField
+      FieldName = 'ALN_ENDERECO'
+      ReadOnly = True
+      Size = 50
+    end
+    object cliAlnDiscALN_NUMERO: TStringField
+      FieldName = 'ALN_NUMERO'
+      ReadOnly = True
+      Size = 10
+    end
+    object cliAlnDiscALN_COMPLEMENTO: TStringField
+      FieldName = 'ALN_COMPLEMENTO'
+      ReadOnly = True
+      Size = 30
+    end
+    object cliAlnDiscALN_BAIRRO: TStringField
+      FieldName = 'ALN_BAIRRO'
+      ReadOnly = True
+      Size = 30
+    end
+    object cliAlnDiscALN_CIDADE: TStringField
+      FieldName = 'ALN_CIDADE'
+      ReadOnly = True
+      Size = 30
+    end
+    object cliAlnDiscALN_UF: TStringField
+      FieldName = 'ALN_UF'
+      ReadOnly = True
+      Size = 2
+    end
+    object cliAlnDiscALN_CEP: TStringField
+      FieldName = 'ALN_CEP'
+      ReadOnly = True
+      Size = 8
+    end
+    object cliAlnDiscALN_DTNASCIMENTO: TDateField
+      FieldName = 'ALN_DTNASCIMENTO'
+      ReadOnly = True
+    end
+    object cliAlnDiscALN_DTCADASTRO: TDateField
+      FieldName = 'ALN_DTCADASTRO'
+      ReadOnly = True
+    end
+  end
+  object dspAlnDisc: TDataSetProvider
+    DataSet = fdqAlnDisc
+    Left = 104
+    Top = 360
+  end
+  object dsAlnDisc: TDataSource
+    DataSet = cliAlnDisc
+    Left = 264
+    Top = 360
+  end
+  object GravaAlnDisc: TFDQuery
+    Connection = fdConexao
+    SQL.Strings = (
+      'insert into alunos_dcp(adc_id, adc_iddcp, adc_idaln )'
+      
+        '                    values ((Select Coalesce( max(adc_id),0)+1 F' +
+        'rom alunos_dcp), :IDDCP, :IDALN)')
+    Left = 592
+    Top = 112
+    ParamData = <
+      item
+        Name = 'IDDCP'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'IDALN'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+end

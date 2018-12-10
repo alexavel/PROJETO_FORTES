@@ -1,0 +1,13 @@
+inherited frmDisciplina: TfrmDisciplina
+  Caption = 'frmDisciplina'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pgCrud: TPageControl
+    inherited tabCrud: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+    end
+  end
+end

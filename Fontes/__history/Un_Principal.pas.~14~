@@ -1,0 +1,61 @@
+unit Un_Principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ImgList, Vcl.Menus, Vcl.ComCtrls,
+  Vcl.ToolWin, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
+  Vcl.ActnMan;
+
+type
+  TfrmPrincipal = class(TForm)
+    mnPrincipal: TMainMenu;
+    abelas1: TMenuItem;
+    Cadastros1: TMenuItem;
+    Notas1: TMenuItem;
+    imgPrincipal: TImageList;
+    atmPrincipal: TActionManager;
+    actDisciplinas: TAction;
+    Disciplinas1: TMenuItem;
+    actSair: TAction;
+    N1: TMenuItem;
+    Sair1: TMenuItem;
+    actNotas: TAction;
+    procedure actDisciplinasExecute(Sender: TObject);
+    procedure actSairExecute(Sender: TObject);
+    procedure actNotasExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses u_Dm, un_CrudBase, Un_Disciplina, Un_TiposNota;
+
+procedure TfrmPrincipal.actDisciplinasExecute(Sender: TObject);
+begin
+  frmDisciplina := TfrmDisciplina.Create(Self);
+  frmDisciplina.ShowModal;
+end;
+
+procedure TfrmPrincipal.actNotasExecute(Sender: TObject);
+begin
+  frmTipoNota := tfrmTipoNota.Create(Self);
+  frmTipoNota.showmodal;
+end;
+
+procedure TfrmPrincipal.actSairExecute(Sender: TObject);
+begin
+ Dm.fdConexao.Close;
+ Close;
+end;
+
+end.

@@ -1,0 +1,9 @@
+inherited frmTipoNota: TfrmTipoNota
+  Caption = 'frmTipoNota'
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dsCrud: TDataSource
+    DataSet = Dm.cliNota
+  end
+end

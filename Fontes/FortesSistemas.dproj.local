@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/12/08 18:39:08.000.013,=C:\Users\AlexAvel\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/12/08 18:39:46.000.066,C:\Users\AlexAvel\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_Principal.dfm</Transaction>
+    <Transaction>2018/12/08 18:39:46.000.066,C:\Users\AlexAvel\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_Principal.pas</Transaction>
+    <Transaction>2018/12/08 18:40:28.000.495,C:\Users\AlexAvel\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\PROJETO_FORTES_INFORMATICA\Fontes\FortesSistemas.dproj</Transaction>
+    <Transaction>2018/12/08 20:51:50.000.570,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/08 20:52:11.000.432,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\u_Dm.dfm</Transaction>
+    <Transaction>2018/12/08 20:52:11.000.432,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\u_Dm.pas</Transaction>
+    <Transaction>2018/12/08 21:31:20.000.383,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/08 21:31:49.000.325,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Classes\un_CrudBase.dfm</Transaction>
+    <Transaction>2018/12/08 21:31:49.000.325,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Classes\un_CrudBase.pas</Transaction>
+    <Transaction>2018/12/09 12:06:44.000.033,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:08:36.000.457,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:09:33.000.108,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:12:57.000.094,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:16:41.000.694,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:23:13.000.801,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:23:29.000.443,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_Disciplina.pas</Transaction>
+    <Transaction>2018/12/09 12:23:29.000.443,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_Disciplina.dfm</Transaction>
+    <Transaction>2018/12/09 12:35:26.000.410,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:35:38.000.957,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_TiposNota.pas</Transaction>
+    <Transaction>2018/12/09 12:35:38.000.957,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_TiposNota.dfm</Transaction>
+    <Transaction>2018/12/09 12:55:59.000.019,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 12:56:08.000.723,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\un_Professores.dfm</Transaction>
+    <Transaction>2018/12/09 12:56:08.000.723,C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\un_Professores.pas</Transaction>
+    <Transaction>2018/12/09 22:30:20.315,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/09 22:30:52.924,C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_Aluno.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm</Transaction>
+    <Transaction>2018/12/09 22:30:52.924,C:\PROJETO_FORTES_INFORMATICA\Fontes\Un_Aluno.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/10 00:37:35.332,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/10 00:38:13.286,C:\PROJETO_FORTES_INFORMATICA\Fontes\un_RelAlunos.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm</Transaction>
+    <Transaction>2018/12/10 00:38:13.286,C:\PROJETO_FORTES_INFORMATICA\Fontes\un_RelAlunos.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/10 01:57:48.692,=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/10 01:58:33.119,C:\PROJETO_FORTES_INFORMATICA\Fontes\un_RelProfessor.pas=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.pas</Transaction>
+    <Transaction>2018/12/10 01:58:33.119,C:\PROJETO_FORTES_INFORMATICA\Fontes\un_RelProfessor.dfm=C:\PROJETO_FORTES_INFORMATICA\Fontes\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

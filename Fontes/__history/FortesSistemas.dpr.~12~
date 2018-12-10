@@ -1,0 +1,18 @@
+program FortesSistemas;
+
+uses
+  Vcl.Forms,
+  Un_Principal in 'Un_Principal.pas' {frmPrincipal},
+  u_Dm in 'u_Dm.pas' {Dm: TDataModule},
+  un_CrudBase in 'Classes\un_CrudBase.pas' {frmCrud},
+  Un_Disciplina in 'Un_Disciplina.pas' {frmDisciplina};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDm, Dm);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.Run;
+end.

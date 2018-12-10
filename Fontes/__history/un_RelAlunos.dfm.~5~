@@ -1,0 +1,317 @@
+object frmRelAlunos: TfrmRelAlunos
+  Left = 0
+  Top = 0
+  Caption = 'frmRelAlunos'
+  ClientHeight = 597
+  ClientWidth = 903
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object RadioGroup1: TRadioGroup
+    Left = 8
+    Top = 8
+    Width = 281
+    Height = 105
+    Caption = 'Pesquisa Avan'#231'ada'
+    ItemIndex = 0
+    Items.Strings = (
+      'Todos Alunos'
+      'Somente os Aprovados'
+      'Somente os Reprovados')
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 295
+    Top = 12
+    Width = 75
+    Height = 25
+    Caption = 'Gerar '
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 295
+    Top = 88
+    Width = 75
+    Height = 25
+    Caption = 'Sair'
+    TabOrder = 2
+  end
+  object RLReport1: TRLReport
+    Left = 8
+    Top = 119
+    Width = 794
+    Height = 1123
+    DataSource = dsRelAluno
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    object RLBand1: TRLBand
+      Left = 38
+      Top = 38
+      Width = 718
+      Height = 51
+      BandType = btTitle
+      object RLLabel1: TRLLabel
+        Left = 3
+        Top = 3
+        Width = 214
+        Height = 19
+        Caption = 'FORTES INFORMATICA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLLabel2: TRLLabel
+        Left = 3
+        Top = 19
+        Width = 214
+        Height = 16
+        Caption = 'Relat'#243'rio de resultado escolar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+    object Grupo_Aluno: TRLGroup
+      Left = 38
+      Top = 89
+      Width = 718
+      Height = 216
+      DataFields = 'NTA_IDALN'
+      object RLBand2: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 37
+        BandType = btHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        Borders.FixedTop = True
+        object RLLabel3: TRLLabel
+          Left = 3
+          Top = 3
+          Width = 100
+          Height = 15
+          Caption = 'NOME DO ALUNO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText1: TRLDBText
+          Left = 3
+          Top = 19
+          Width = 542
+          Height = 15
+          AutoSize = False
+          DataField = 'ALN_NOME'
+          DataSource = dsRelAluno
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLLabel4: TRLLabel
+          Left = 583
+          Top = 3
+          Width = 73
+          Height = 15
+          Caption = 'RESULTADO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText2: TRLDBText
+          Left = 583
+          Top = 19
+          Width = 132
+          Height = 15
+          AutoSize = False
+          DataField = 'STATUS'
+          DataSource = dsRelAluno
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+      end
+      object Grupo_Disciplinas: TRLGroup
+        Left = 0
+        Top = 37
+        Width = 718
+        Height = 148
+        DataFields = 'NTA_IDALN;NTA_IDDCP'
+        object RLBand3: TRLBand
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 25
+          BandType = btHeader
+          object RLLabel5: TRLLabel
+            Left = 99
+            Top = 3
+            Width = 67
+            Height = 15
+            Caption = 'DISCIPLINA'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object RLDBText3: TRLDBText
+            Left = 177
+            Top = 3
+            Width = 184
+            Height = 15
+            AutoSize = False
+            DataField = 'DCP_DESCRICAO'
+            DataSource = dsRelAluno
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+          object RLLabel6: TRLLabel
+            Left = 506
+            Top = 4
+            Width = 114
+            Height = 15
+            Alignment = taRightJustify
+            Caption = 'M'#201'DIA DISCIPLINA'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object RLDBText6: TRLDBText
+            Left = 626
+            Top = 4
+            Width = 89
+            Height = 15
+            AutoSize = False
+            DataField = 'MEDIAALUNO'
+            DataSource = dsRelAluno
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Text = ''
+          end
+        end
+        object Grupo_Notas: TRLGroup
+          Left = 0
+          Top = 25
+          Width = 718
+          Height = 80
+          DataFields = 'NTA_IDALN;NTA_IDDCP;NTA_IDTNT'
+          object RLBand4: TRLBand
+            Left = 0
+            Top = 0
+            Width = 718
+            Height = 25
+            object RLDBText4: TRLDBText
+              Left = 177
+              Top = 2
+              Width = 443
+              Height = 15
+              Alignment = taRightJustify
+              AutoSize = False
+              DataField = 'TNT_DESCRICAO'
+              DataSource = dsRelAluno
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              Text = ''
+            end
+            object RLDBText5: TRLDBText
+              Left = 626
+              Top = 2
+              Width = 89
+              Height = 15
+              Alignment = taRightJustify
+              AutoSize = False
+              DataField = 'NTA_NOTA'
+              DataSource = dsRelAluno
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              Text = ''
+            end
+          end
+        end
+      end
+    end
+  end
+  object fdqRelAluno: TFDQuery
+    Active = True
+    Connection = Dm.fdConexao
+    SQL.Strings = (
+      
+        'Select NT.nta_idaln, NT.nta_iddcp, NT.nta_idtnt, aln_Nome, dcp_d' +
+        'escricao, tnt_descricao, nta_nota,'
+      
+        '(SELECT AVG(nta_nota) FROM alunos_nota X where X.nta_idaln = NT.' +
+        'nta_idaln and x.nta_iddcp = NT.nta_iddcp ) as MediaAluno,'
+      'Case'
+      
+        '   when (SELECT AVG(nta_nota) FROM alunos_nota X where X.nta_ida' +
+        'ln = NT.nta_idaln and x.nta_iddcp = NT.nta_iddcp ) >= dcp_media ' +
+        'then '#39'APROVADO'#39
+      '   ELSE '#39'REPROVADO'#39' END as Status'
+      'from alunos_nota as NT'
+      'join alunos On aln_id = NT.nta_idaln'
+      'join disciplina On dcp_id = NT.nta_iddcp'
+      'join tipo_nota on tnt_id = NT.nta_idtnt'
+      'ORDER BY NT.nta_idaln, NT.nta_iddcp, NT.nta_idtnt')
+    Left = 424
+    Top = 8
+  end
+  object dsRelAluno: TDataSource
+    DataSet = fdqRelAluno
+    Left = 520
+    Top = 16
+  end
+end

@@ -1,0 +1,120 @@
+unit un_Professores;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, un_CrudBase, Data.DB, Vcl.ImgList,
+  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, Vcl.ToolWin,
+  Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  TfrmProfessores = class(TfrmCrud)
+    PFR_ID: TLabeledEdit;
+    PFR_NOME: TLabeledEdit;
+    PFR_CPF: TMaskEdit;
+    Label2: TLabel;
+    PFR_DTNASCIMENTO: TDateTimePicker;
+    Label3: TLabel;
+    grbDis: TGroupBox;
+    cbxDisciplinas: TComboBox;
+    btnInDiscliplina: TButton;
+    dbgDisciplinas: TDBGrid;
+    procedure FormCreate(Sender: TObject);
+    procedure btnConsultarExecute(Sender: TObject);
+    procedure btnAlterarExecute(Sender: TObject);
+    procedure btnExcluirExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnInDiscliplinaClick(Sender: TObject);
+  private
+    procedure GridDisciplinas;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmProfessores: TfrmProfessores;
+
+implementation
+
+uses
+  u_Dm;
+
+{$R *.dfm}
+
+procedure TfrmProfessores.btnAlterarExecute(Sender: TObject);
+begin
+  inherited;
+  GridDisciplinas;
+end;
+
+procedure TfrmProfessores.btnConsultarExecute(Sender: TObject);
+begin
+  inherited;
+  GridDisciplinas;
+end;
+
+procedure TfrmProfessores.btnExcluirExecute(Sender: TObject);
+begin
+  inherited;
+  GridDisciplinas;
+end;
+
+procedure TfrmProfessores.btnInDiscliplinaClick(Sender: TObject);
+begin
+  inherited;
+  if cbxDisciplinas.ItemIndex > 0 then
+      with Dm.GravaDiscDet do
+      begin
+        Params[0].Value := (cbxDisciplinas.ItemIndex);
+        Params[1].Value := dsCrud.DataSet.FieldByName('PFR_ID').AsString;
+        ExecSQL;
+      end;
+      GridDisciplinas;
+      cbxDisciplinas.ItemIndex := 0;
+
+end;
+
+procedure TfrmProfessores.GridDisciplinas;
+begin
+  Dm.cliDiscDet.Close;
+  Dm.cliDiscDet.Params[0].Value := dsCrud.DataSet.FieldByName('PFR_ID').AsString;
+  Dm.cliDiscDet.Active := True;
+end;
+
+procedure TfrmProfessores.FormCreate(Sender: TObject);
+begin
+  inherited;
+  Tabela    := 'DOCENTES';
+  SqlQuery  := Dm.fdqDocentes ;
+  Titulo    := 'Cadastro de Professores';
+
+end;
+
+procedure TfrmProfessores.FormShow(Sender: TObject);
+begin
+  inherited;
+  cbxDisciplinas.Clear;
+  with Dm.fdqDisciplina do
+  begin
+    Close;
+    Open;
+    if  not IsEmpty then
+    begin
+        cbxDisciplinas.Items.Add('Selecione uma disciplina ');
+        while Not Eof do
+        begin
+          cbxDisciplinas.Items.Add(trim( FieldByName('DCP_ID').AsString)+'-'+trim( FieldByName('DCP_descricao').AsString));
+          next;
+        end;
+        cbxDisciplinas.ItemIndex := 0;
+    end;
+
+
+  end;
+
+
+end;
+
+end.
